@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Django</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+</head>
+<body>
+    <div class="container">
+        {% if user.is_authenticated %}
+            <h3>Hello {{ fname }}</h3>
+            <h3>Welcome to Django</h3>
+            <h4>You're successfully logged in.</h4>
+            <h4>This is a Sample Page here you can include external templates and websites</h4>
+
+            <p>Explore the features of our platform to
+                 maximize your experience. Access your
+                  personalized dashboard, update your profile details, 
+                  and engage with our latest offerings. If you have any
+                   questions or need assistance, feel free to reach out to
+                  me. Enjoy your time!!! <strong>Thank You</strong></p>
+
+            <button><a href="/signout">Sign Out</a></button>
+        {% else %}
+             {% for message in messages %}
+            <div class="alert alert-danger">
+                  <strong>{{message}}</strong> 
+            </div>
+        {% endfor %}
+            {% csrf_token %}
+            <h3>Thanks for visiting Django</h3>
+            <button><a href="/signup">Sign Up</a></button>
+            <button><a href="/signin">Sign In</a></button>
+        {% endif %}
+    </div>
+</body>
+</html>

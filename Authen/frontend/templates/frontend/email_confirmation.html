@@ -1,0 +1,12 @@
+{% load static %}
+{% autoescape off %}
+{%csrf_token%}
+Hello {{ name }}!<br>
+
+Welcome to Django <br>
+
+Please confirm your email by clicking on the following link:<br><br>
+
+Confirmation Link: http://{{ domain }}{% url 'activate' uidb64=uid64 token=token %}
+
+{% endautoescape %}
